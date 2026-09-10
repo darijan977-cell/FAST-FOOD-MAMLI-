@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamli | Smooth Premium Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar-dark sticky-nav">
+    <div class="nav-left-brand">
+        <img src="img/logo.png" alt="Mamli Logo" class="brand-logo">
+        <span class="brand-title" style="color: #ffffff;">MAMLI<span class="orange-dot">.</span></span>
+    </div>
+    
+    <nav class="nav-center-capsule">
+    <a href="#" class="nav-link active" id="homeLink" data-mk="Дома" data-en="Home">Дома</a>
+    <a href="#menu" class="nav-link" id="menuLink" data-mk="Мени" data-en="Menu">Мени</a>
+    <a href="#contact" class="nav-link" id="contactLink" data-mk="Контакт" data-en="Contact">Контакт</a>
+</nav>
+    
+    <div class="nav-right-actions">
+        
+        <div class="lang-selector">
+            <button class="lang-toggle-btn active" data-target-lang="mk">MK</button>
+            <span class="lang-separator">|</span>
+            <button class="lang-toggle-btn" data-target-lang="en">EN</button>
+        </div>
+
+        <div class="cart-wrapper">
+            <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="mainCartBadge" style="display: none;">0</span>
+        </div>
+<button id="naracajSegaBtn" data-en="Order History" data-mk="Историја на нарачки">Историја на нарачки</button>
+    </div>
+</header>
+
+    <div class="hero-container">
+        <main class="slider-viewport">
+            
+            <button class="arrow-btn prev-btn" id="prevBtn" aria-label="Previous Slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <button class="arrow-btn next-btn" id="nextBtn" aria-label="Next Slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+
+            <div class="slider-track" id="sliderTrack">
+                
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">MAMLI</div>
+                        <div class="text-line text-stroke">DOUBLE</div>
+                        <div class="text-line">BURGER</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/burger1.png" class="product-image breathing">
+                        <div class="price-stamp">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve1" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve1" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">250<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">CHEEZY</div>
+                        <div class="text-line text-stroke">HOTDOG</div>
+                        <div class="text-line">SPECIAL</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/hotdog.png" class="product-image breathing">
+                        <div class="price-stamp yellow">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve2" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve2" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">150<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">CHEESY</div>
+                        <div class="text-line text-stroke">CHICKEN</div>
+                        <div class="text-line">BURGER</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/chicken.png" class="product-image breathing">
+                        <div class="price-stamp">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve3" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve3" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">220<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">MAMLI</div>
+                        <div class="text-line text-stroke">FRIES</div>
+                        <div class="text-line">XL-SIZE</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/fries.png" class="product-image breathing">
+                        <div class="price-stamp yellow">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve4" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve4" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">120<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">CHEESY</div>
+                        <div class="text-line text-stroke">HAM</div>
+                        <div class="text-line">SANDWICH</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/pecen.png" class="product-image breathing">
+                        <div class="price-stamp">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve5" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve5" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">180<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">CHEESY</div>
+                        <div class="text-line text-stroke">HAM</div>
+                        <div class="text-line">TOAST</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/tost.png" class="product-image breathing">
+                        <div class="price-stamp yellow">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve6" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve6" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">280<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">CHEESY</div>
+                        <div class="text-line text-stroke">CHICKEN</div>
+                        <div class="text-line">FUNGI</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/fungi.png" class="product-image breathing">
+                        <div class="price-stamp">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve7" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve7" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">200<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="background-text">
+                        <div class="text-line">CREAM</div>
+                        <div class="text-line text-stroke">CHEESE</div>
+                        <div class="text-line">FRENCH</div>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="img/fran.png" class="product-image breathing">
+                        <div class="price-stamp yellow">
+                            <div class="rotating-label">
+                                <svg viewBox="0 0 100 100"><path id="curve8" fill="transparent" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /><text><textPath href="#curve8" fill="currentColor" font-size="12" font-weight="900" letter-spacing="1">FRESH • PREMIUM • TASTY • </textPath></text></svg>
+                            </div>
+                            <div class="price">160<small data-mk="ден." data-en="den.">ден.</small></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <div class="dots-nav" id="dotsNav"></div>
+    </div>
+
+<section class="delivery-section" style="position: relative;">
+    
+    <div class="scooter-track-section">
+        <div class="scooter-track-bg"></div>
+        <div class="scooter-progress-fill"></div>
+        <div class="scooter-animation-container">
+            <img src="img/delivery.png" class="scooter-guy" alt="Delivery Guy">
+        </div>
+    </div>
+
+    <div class="delivery-container" style="position: relative; z-index: 2;">
+        <div class="delivery-content anim-right">
+            <span class="delivery-badge" data-mk="БРЗА ИСПОРАКА" data-en="FAST DELIVERY">БРЗА ИСПОРАКА</span>
+            <h2 class="delivery-title" data-mk="Твојот омилен бургер, пристигнува!" data-en="Your favorite burger, on the way!">Твојот омилен бургер, пристигнува!</h2>
+            <p class="delivery-text" data-mk="Нашиот тим се грижи секоја нарачка да стигне топла, крцкава и навреме. Твојот омилен оброк е на само еден клик подалеку!" data-en="Our team ensures every order arrives hot, crispy, and right on time. Your favorite meal is just a single click away!">Нашиот тим се грижи секоја нарачка да стигне топла, крцкава и навреме. Твојот омилен оброк е на само еден клик подалеку!</p>
+        </div>
+        <div class="delivery-clock-graphic">
+        <img src="img/clock.png" alt="30 Minutes Delivery" class="animated-delivery-clock">
+    </div>
+    </div>
+</section>
+
+
+
+    <section id="menu" class="menu-section">
+        <div class="menu-header">
+            <h2 class="menu-title" data-mk='МЕНИ<span class="highlight">ТО</span>' data-en='THE <span class="highlight">MENU</span>'>МЕНИ<span class="highlight">ТО</span></h2>
+            <p class="menu-subtitle" data-mk="Свежо подготвени премиум специјалитети" data-en="Freshly prepared premium items">Свежо подготвени премиум специјалитети</p>
+        </div>
+
+        <div class="category-cards-container">
+           <div class="cat-card active" data-target="cat-burgers">
+    <div class="cat-img-placeholder">
+        <img src="img/chicken.png" alt="Burgers Category">
+    </div>
+    <h3 data-mk="БУРГЕРИ" data-en="BURGERS">БУРГЕРИ</h3>
+</div>
+           <div class="cat-card" data-target="cat-toasted">
+        <div class="cat-img-placeholder">
+            <img src="img/pecen.png" alt="Toasted Sandwiches">
+        </div>
+        <h3 data-mk="ПЕЧЕНИ СЕНДВИЧИ" data-en="TOASTED SANDWICHES">ПЕЧЕНИ СЕНДВИЧИ</h3>
+    </div>
+    <div class="cat-card" data-target="cat-hot">
+        <div class="cat-img-placeholder">
+            <img src="img/hotdog.png" alt="Hot Dog">
+        </div> 
+        <h3 data-mk="ХОТ ДОГ" data-en="HOT DOG">ХОТ ДОГ</h3>
+    </div>
+    <div class="cat-card" data-target="cat-tost">
+        <div class="cat-img-placeholder">
+            <img src="img/tost.png" alt="Toast">
+        </div> 
+        <h3 data-mk="ТОСТОВИ" data-en="TOAST">ТОСТОВИ</h3>
+    </div>
+    <div class="cat-card" data-target="cat-french">
+        <div class="cat-img-placeholder">
+            <img src="img/fran.png" alt="French Sandwiches">
+        </div>
+        <h3 data-mk="ФРАНЦУСКИ СЕНДВИЧИ" data-en="FRENCH SANDWICHES">ФРАНЦУСКИ СЕНДВИЧИ</h3>
+    </div>
+    <div class="cat-card" data-target="cat-fasting">
+        <div class="cat-img-placeholder">
+            <img src="img/tunams.png" alt="Fasting Dishes">
+        </div>
+        <h3 data-mk="ПОСНИ ЈАДЕЊА" data-en="FASTING DISHES">ПОСНИ ЈАДЕЊА</h3>
+    </div>
+    <div class="cat-card" data-target="cat-fries">
+        <div class="cat-img-placeholder">
+            <img src="img/frie.png" alt="Fries and Sides">
+        </div>
+        <h3 data-mk="ПОМФРИТ & ДОДАТОЦИ" data-en="FRIES & SIDES">ПОМФРИТ & ДОДАТОЦИ</h3>
+    </div>
+    <div class="cat-card" data-target="cat-drinks">
+        <div class="cat-img-placeholder">
+            <img src="img/drinks.png" alt="Drinks">
+        </div>
+        <h3 data-mk="ПИЈАЛОЦИ" data-en="DRINKS">ПИЈАЛОЦИ</h3>
+    </div>
+</div>
+        
+        <div id="cat-burgers" class="menu-category-section active">
+            <h3 class="menu-category-title" data-mk="БУРГЕРИ" data-en="BURGERS">БУРГЕРИ</h3>
+            <div class="menu-grid">
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/hamb.png" alt="Хамбургер" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ХАМБУРГЕР" data-en="HAMBURGER">ХАМБУРГЕР</h3>
+                        <span class="item-price" data-mk="150 / 180 ден." data-en="150 / 180 den.">150 / 180 ден.</span>
+                        <p class="ingredients" data-mk="Плескавица (140гр), свежа салата, крцкав помфрит (100гр)" data-en="Patty (140g), fresh salad, crispy fries (100g)">Плескавица (140гр), свежа салата, крцкав помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/ciz.png" alt="Чизбургер" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ЧИЗБУРГЕР" data-en="CHEESEBURGER">ЧИЗБУРГЕР</h3>
+                        <span class="item-price" data-mk="180 / 200 ден." data-en="180 / 200 den.">180 / 200 ден.</span>
+                        <p class="ingredients" data-mk="Плескавица (140гр), кашкавал (40гр), свежа салата, помфрит (100гр)" data-en="Patty (140g), yellow cheese (40g), fresh salad, fries (100g)">Плескавица (140гр), кашкавал (40гр), свежа салата, помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/doub.png" alt="Double Burger" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="DOUBLE BURGER" data-en="DOUBLE BURGER">DOUBLE BURGER</h3>
+                        <span class="item-price" data-mk="190 / 220 ден." data-en="190 / 220 den.">190 / 220 ден.</span>
+                        <p class="ingredients" data-mk="Две сочни плескавици (280гр), свежа салата, помфрит (100гр)" data-en="Two juicy patties (280g), fresh salad, fries (100g)">Две сочни плескавици (280гр), свежа салата, помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/dciz.png" alt="Double Cheese" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="DOUBLE CHEESE" data-en="DOUBLE CHEESE">DOUBLE CHEESE</h3>
+                        <span class="item-price" data-mk="230 / 260 ден." data-en="230 / 260 den.">230 / 260 ден.</span>
+                        <p class="ingredients" data-mk="Две сочни плескавици (280гр), кашкавал (80гр), салата, помфрит (100гр)" data-en="Two juicy patties (280g), yellow cheese (80g), salad, fries (100g)">Две сочни плескавици (280гр), кашкавал (80гр), салата, помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/mamli.png" alt="Mamli Burger" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="MAMLI BURGER" data-en="MAMLI BURGER">MAMLI BURGER</h3>
+                        <span class="item-price" data-mk="260 / 300 ден." data-en="260 / 300 den.">260 / 300 ден.</span>
+                        <p class="ingredients" data-mk="Две плескавици (280гр), топен кашкавал (80гр), вкусен сув врат (40гр), салата, помфрит (100гр)" data-en="Two patties (280g), melted cheese (80g), tasty smoked neck (40g), salad, fries (100g)">Две плескавици (280гр), топен кашкавал (80гр), вкусен сув врат (40гр), салата, помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/chib.png" alt="Чикен Бургер" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ЧИКЕН БУРГЕР" data-en="CHICKEN BURGER">ЧИКЕН БУРГЕР</h3>
+                        <span class="item-price" data-mk="170 / 200 ден." data-en="170 / 200 den.">170 / 200 ден.</span>
+                        <p class="ingredients" data-mk="Пилешки стек (200гр), свежа салата, крцкав помфрит (100гр)" data-en="Chicken steak (200g), fresh salad, crispy fries (100g)">Пилешки стек (200гр), свежа салата, крцкав помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/chiciz.png" alt="Чикен Чиз" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ЧИКЕН ЧИЗ" data-en="CHICKEN CHEESE">ЧИКЕН ЧИЗ</h3>
+                        <span class="item-price" data-mk="200 / 240 ден." data-en="200 / 240 den.">200 / 240 ден.</span>
+                        <p class="ingredients" data-mk="Пилешки стек (200гр), кашкавал (40гр), салата, помфрит (100гр)" data-en="Chicken steak (200g), yellow cheese (40g), salad, fries (100g)">Пилешки стек (200гр), кашкавал (40гр), салата, помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/chim.png" alt="Чикен Мамли" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ЧИКЕН МАМЛИ" data-en="CHICKEN MAMLI">ЧИКЕН МАМЛИ</h3>
+                        <span class="item-price" data-mk="230 / 260 ден." data-en="230 / 260 den.">230 / 260 ден.</span>
+                        <p class="ingredients" data-mk="Пилешки стек (200гр), кашкавал (60гр), врат (40гр), печурки (30гр), салата, помфрит (100гр)" data-en="Chicken steak (200g), yellow cheese (60g), smoked neck (40g), mushrooms (30g), salad, fries (100g)">Пилешки стек (200гр), кашкавал (60гр), врат (40гр), печурки (30гр), салата, помфрит (100гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/fungi.png" alt="Чикен Фунги" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ЧИКЕН ФУНГИ" data-en="CHICKEN FUNGI">ЧИКЕН ФУНГИ</h3>
+                        <span class="item-price" data-mk="230 / 260 ден." data-en="230 / 260 den.">230 / 260 ден.</span>
+                        <p class="ingredients" data-mk="Пилешки стек (200гр), кашкавал (60гр), печурки (30гр), салата, помфрит (100гр)" data-en="Chicken steak (200g), yellow cheese (60g), mushrooms (30g), salad, fries (100g)">Пилешки стек (200гр), кашкавал (60гр), печурки (30гр), салата, помфрит (100гр)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-toasted" class="menu-category-section">
+            <h3 class="menu-category-title" data-mk="ПЕЧЕНИ СЕНДВИЧИ" data-en="TOASTED SANDWICHES">ПЕЧЕНИ СЕНДВИЧИ</h3>
+            <div class="menu-grid">
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/sunk.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ШУНКА И КАШКАВАЛ" data-en="HAM AND CHEESE">ШУНКА И КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="120 ден." data-en="120 den.">120 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (60гр), кашкавал (60гр)" data-en="Ham (60g), yellow cheese (60g)">Шунка (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/pecen.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ШУНКА, КАШКАВАЛ И ПЕЧУРКИ" data-en="HAM, CHEESE & MUSHROOMS">ШУНКА, КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="140 ден." data-en="140 den.">140 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (60гр), кашкавал (60гр), печурки (30гр)" data-en="Ham (60g), yellow cheese (60g), mushrooms (30g)">Шунка (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/vrat.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ВРАТ И КАШКАВАЛ" data-en="SMOKED NECK AND CHEESE">ВРАТ И КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="140 ден." data-en="140 den.">140 ден.</span>
+                        <p class="ingredients" data-mk="Врат (60гр), кашкавал (60гр)" data-en="Smoked neck (60g), yellow cheese (60g)">Врат (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/vratp.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ВРАТ, КАШКАВАЛ И ПЕЧУРКИ" data-en="SMOKED NECK, CHEESE & MUSHROOMS">ВРАТ, КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="160 ден." data-en="160 den.">160 ден.</span>
+                        <p class="ingredients" data-mk="Врат (60гр), кашкавал (60гр), печурки (30гр)" data-en="Smoked neck (60g), yellow cheese (60g), mushrooms (30g)">Врат (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/kul.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="КУЛЕН И КАШКАВАЛ" data-en="KULEN SALAMI AND CHEESE">КУЛЕН И КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="170 ден." data-en="170 den.">170 ден.</span>
+                        <p class="ingredients" data-mk="Кулен (60гр), кашкавал (60гр)" data-en="Kulen salami (60g), yellow cheese (60g)">Кулен (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/kulm.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="КУЛЕН, КАШКАВАЛ И ПЕЧУРКИ" data-en="KULEN, CHEESE & MUSHROOMS">КУЛЕН, КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="190 ден." data-en="190 den.">190 ден.</span>
+                        <p class="ingredients" data-mk="Кулен (60гр), кашкавал (60гр), печурки (30гр)" data-en="Kulen salami (60g), yellow cheese (60g), mushrooms (30g)">Кулен (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/kasm.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="КАШКАВАЛ И ПЕЧУРКИ" data-en="CHEESE AND MUSHROOMS">КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="150 ден." data-en="150 den.">150 ден.</span>
+                        <p class="ingredients" data-mk="Кашкавал (100гр), печурки (30гр)" data-en="Yellow cheese (100g), mushrooms (30g)">Кашкавал (100гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/kps.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="КАШКАВАЛ, ПЕЧУРКИ И САЛАТА" data-en="CHEESE, MUSHROOMS & SALAD">КАШКАВАЛ, ПЕЧУРКИ И САЛАТА</h3>
+                        <span class="item-price" data-mk="160 ден." data-en="160 den.">160 ден.</span>
+                        <p class="ingredients" data-mk="Кашкавал (100гр), печурки (30гр), салата" data-en="Yellow cheese (100g), mushrooms (30g), salad">Кашкавал (100гр), печурки (30гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/ksk.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ШУНКА + КУЛЕН + КАШКАВАЛ" data-en="HAM + KULEN + CHEESE">ШУНКА + КУЛЕН + КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="180 ден." data-en="180 den.">180 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (60гр), кулен (60гр), кашкавал (60гр)" data-en="Ham (60g), kulen salami (60g), yellow cheese (60g)">Шунка (60гр), кулен (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/kskm.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ШУНКА + КУЛЕН + КАШКАВАЛ + ПЕЧУРКИ" data-en="HAM + KULEN + CHEESE + MUSHROOMS">ШУНКА + КУЛЕН + КАШКАВАЛ + ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="200 ден." data-en="200 den.">200 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (60гр), кулен (60гр), кашкавал (60гр), печурки (30гр)" data-en="Ham (60g), kulen salami (60g), yellow cheese (60g), mushrooms (30g)">Шунка (60гр), кулен (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/kvk.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ВРАТ + КУЛЕН + КАШКАВАЛ" data-en="SMOKED NECK + KULEN + CHEESE">ВРАТ + КУЛЕН + КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="240 ден." data-en="240 den.">240 ден.</span>
+                        <p class="ingredients" data-mk="Врат (60гр), кулен (60гр), кашкавал (60гр)" data-en="Smoked neck (60g), kulen salami (60g), yellow cheese (60g)">Врат (60гр), кулен (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/kvkm.png" alt="Сендвич" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ВРАТ + КУЛЕН + КАШКАВАЛ + ПЕЧУРКИ" data-en="SMOKED NECK + KULEN + CHEESE + MUSHROOMS">ВРАТ + КУЛЕН + КАШКАВАЛ + ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="260 ден." data-en="260 den.">260 ден.</span>
+                        <p class="ingredients" data-mk="Врат (60гр), кулен (60гр), кашкавал (60гр), печурки (30гр)" data-en="Smoked neck (60g), kulen salami (60g), yellow cheese (60g), mushrooms (30g)">Врат (60гр), кулен (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <div id="cat-hot" class="menu-category-section"> 
+            <h3 class="menu-category-title" data-mk="ХОТ ДОГ" data-en="HOT DOGS" style="margin-top: 40px;">ХОТ ДОГ</h3>
+            <div class="menu-grid">
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/h1.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ОБИЧЕН ХОТ ДОГ (1 ВИРШЛА)" data-en="REGULAR HOT DOG (1 SAUSAGE)">ОБИЧЕН ХОТ ДОГ (1 ВИРШЛА)</h3>
+                        <span class="item-price" data-mk="70 ден." data-en="70 den.">70 ден.</span>
+                        <p class="ingredients" data-mk="1 Виршла (50гр), салата" data-en="1 Sausage (50g), salad">1 Виршла (50гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/h2.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ОБИЧЕН ХОТ ДОГ (2 ВИРШЛИ)" data-en="REGULAR HOT DOG (2 SAUSAGES)">ОБИЧЕН ХОТ ДОГ (2 ВИРШЛИ)</h3>
+                        <span class="item-price" data-mk="90 ден." data-en="90 den.">90 ден.</span>
+                        <p class="ingredients" data-mk="2 Виршли (100гр), салата" data-en="2 Sausages (100g), salad">2 Виршли (100гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/hc1.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ХОТ ДОГ СО КАШКАВАЛ (1 ВИРШЛА)" data-en="HOT DOG WITH CHEESE (1 SAUSAGE)">ХОТ ДОГ СО КАШКАВАЛ (1 ВИРШЛА)</h3>
+                        <span class="item-price" data-mk="100 ден." data-en="100 den.">100 ден.</span>
+                        <p class="ingredients" data-mk="1 Виршла (50гр), кашкавал (60гр), салата" data-en="1 Sausage (50g), yellow cheese (60g), salad">1 Виршла (50гр), кашкавал (60гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/hc2.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ХОТ ДОГ СО КАШКАВАЛ (2 ВИРШЛИ)" data-en="HOT DOG WITH CHEESE (2 SAUSAGES)">ХОТ ДОГ СО КАШКАВАЛ (2 ВИРШЛИ)</h3>
+                        <span class="item-price" data-mk="120 ден." data-en="120 den.">120 ден.</span>
+                        <p class="ingredients" data-mk="2 Виршли (100гр), кашкавал (60гр), салата" data-en="2 Sausages (100g), yellow cheese (60g), salad">2 Виршли (100гр), кашкавал (60гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/hv1.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ХОТ ДОГ СО ВРАТ И КАШКАВАЛ (1 ВИРШЛА)" data-en="HOT DOG WITH SMOKED NECK & CHEESE (1 SAUSAGE)">ХОТ ДОГ СО ВРАТ И КАШКАВАЛ (1 ВИРШЛА)</h3>
+                        <span class="item-price" data-mk="130 ден." data-en="130 den.">130 ден.</span>
+                        <p class="ingredients" data-mk="1 Виршла (50гр), врат (30гр), кашкавал (60гр), салата" data-en="1 Sausage (50g), smoked neck (30g), yellow cheese (60g), salad">1 Виршла (50гр), врат (30гр), кашкавал (60гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/hv2.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ХОТ ДОГ СО ВРАТ И КАШКАВАЛ (2 ВИРШЛИ)" data-en="HOT DOG WITH SMOKED NECK & CHEESE (2 SAUSAGES)">ХОТ ДОГ СО ВРАТ И КАШКАВАЛ (2 ВИРШЛИ)</h3>
+                        <span class="item-price" data-mk="150 ден." data-en="150 den.">150 ден.</span>
+                        <p class="ingredients" data-mk="2 Виршли (100гр), врат (30гр), кашкавал (60гр), салата" data-en="2 Sausages (100g), smoked neck (30g), yellow cheese (60g), salad">2 Виршли (100гр), врат (30гр), кашкавал (60гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/hp1.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ХОТ ДОГ СО КАШКАВАЛ И ПАВЛАКА (1 ВИРШЛА)" data-en="HOT DOG WITH CHEESE & SOUR CREAM (1 SAUSAGE)">ХОТ ДОГ СО КАШКАВАЛ И ПАВЛАКА (1 ВИРШЛА)</h3>
+                        <span class="item-price" data-mk="130 ден." data-en="130 den.">130 ден.</span>
+                        <p class="ingredients" data-mk="1 Виршла (50гр), кашкавал (60гр), павлака (20гр), салата" data-en="1 Sausage (50g), yellow cheese (60g), sour cream (20g), salad">1 Виршла (50гр), кашкавал (60гр), павлака (20гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/hp2.png" alt="Хот Дог" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ХОТ ДОГ СО КАШКАВАЛ И ПАВЛАКА (2 ВИРШЛИ)" data-en="HOT DOG WITH CHEESE & SOUR CREAM (2 SAUSAGES)">ХОТ ДОГ СО КАШКАВАЛ И ПАВЛАКА (2 ВИРШЛИ)</h3>
+                        <span class="item-price" data-mk="150 ден." data-en="150 den.">150 ден.</span>
+                        <p class="ingredients" data-mk="2 Виршли (100гр), кашкавал (60гр), павлака (20гр), салата" data-en="2 Sausages (100g), yellow cheese (60g), sour cream (20g), salad">2 Виршли (100гр), кашкавал (60гр), павлака (20гр), салата</p>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <div id="cat-tost" class="menu-category-section">
+            <h3 class="menu-category-title" data-mk="ТОСТ" data-en="TOAST" style="margin-top: 40px;">ТОСТ</h3>
+            <div class="menu-grid">
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/ts.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ ШУНКА И КАШКАВАЛ" data-en="HAM & CHEESE TOAST">ТОСТ ШУНКА И КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="100 ден." data-en="100 den.">100 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (60гр), кашкавал (60гр)" data-en="Ham (60g), yellow cheese (60g)">Шунка (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/tsm.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ ШУНКА, КАШКАВАЛ И ПЕЧУРКИ" data-en="HAM, CHEESE & MUSHROOMS TOAST">ТОСТ ШУНКА, КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="130 ден." data-en="130 den.">130 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (60гр), кашкавал (60гр), печурки (30гр)" data-en="Ham (60g), yellow cheese (60g), mushrooms (30g)">Шунка (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/tost.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ ВРАТ И КАШКАВАЛ" data-en="SMOKED NECK & CHEESE TOAST">ТОСТ ВРАТ И КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="130 ден." data-en="130 den.">130 ден.</span>
+                        <p class="ingredients" data-mk="Врат (60гр), кашкавал (60гр)" data-en="Smoked neck (60g), yellow cheese (60g)">Врат (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/tvm.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ ВРАТ, КАШКАВАЛ И ПЕЧУРКИ" data-en="SMOKED NECK, CHEESE & MUSHROOMS TOAST">ТОСТ ВРАТ, КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="150 ден." data-en="150 den.">150 ден.</span>
+                        <p class="ingredients" data-mk="Врат (60гр), кашкавал (60гр), печурки (30гр)" data-en="Smoked neck (60g), yellow cheese (60g), mushrooms (30g)">Врат (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/tk.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ КУЛЕН И КАШКАВАЛ" data-en="KULEN SALAMI & CHEESE TOAST">ТОСТ КУЛЕН И КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="150 ден." data-en="150 den.">150 ден.</span>
+                        <p class="ingredients" data-mk="Кулен (60гр), кашкавал (60гр)" data-en="Kulen salami (60g), yellow cheese (60g)">Кулен (60гр), кашкавал (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/tkm.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ КУЛЕН, КАШКАВАЛ И ПЕЧУРКИ" data-en="KULEN, CHEESE & MUSHROOMS TOAST">ТОСТ КУЛЕН, КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="170 ден." data-en="170 den.">170 ден.</span>
+                        <p class="ingredients" data-mk="Кулен (60гр), кашкавал (60гр), печурки (30гр)" data-en="Kulen salami (60g), yellow cheese (60g), mushrooms (30g)">Кулен (60гр), кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/tka.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ САМО КАШКАВАЛ" data-en="JUST YELLOW CHEESE TOAST">ТОСТ САМО КАШКАВАЛ</h3>
+                        <span class="item-price" data-mk="110 ден." data-en="110 den.">110 ден.</span>
+                        <p class="ingredients" data-mk="Кашкавал (120гр)" data-en="Yellow cheese (120g)">Кашкавал (120гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/tsu.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ САМО ШУНКА" data-en="JUST HAM TOAST">ТОСТ САМО ШУНКА</h3>
+                        <span class="item-price" data-mk="90 ден." data-en="90 den.">90 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (120гр)" data-en="Ham (120g)">Шунка (120гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/tsp.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ ПИЛЕШКА САЛАМА" data-en="CHICKEN SALAMI TOAST">ТОСТ ПИЛЕШКА САЛАМА</h3>
+                        <span class="item-price" data-mk="100 ден." data-en="100 den.">100 ден.</span>
+                        <p class="ingredients" data-mk="Пилешка салама (60гр), кашкавал (30гр)" data-en="Chicken salami (60g), yellow cheese (30g)">Пилешка салама (60гр), кашкавал (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/tkam.png" alt="Тост" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ТОСТ КАШКАВАЛ И ПЕЧУРКИ" data-en="YELLOW CHEESE & MUSHROOMS TOAST">ТОСТ КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="130 ден." data-en="130 den.">130 ден.</span>
+                        <p class="ingredients" data-mk="Кашкавал (100гр), печурки (30гр)" data-en="Yellow cheese (100g), mushrooms (30g)">Кашкавал (100гр), печурки (30гр)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-french" class="menu-category-section">
+            <h3 class="menu-category-title" data-mk="ФРАНЦУСКИ СЕНДВИЧИ" data-en="FRENCH SANDWICHES">ФРАНЦУСКИ СЕНДВИЧИ</h3>
+            <div class="menu-grid">
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/fp.png" alt="Француски" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ФРАНЦУСКИ СО САЛАМА" data-en="FRENCH WITH SALAMI">ФРАНЦУСКИ СО САЛАМА</h3>
+                        <span class="item-price" data-mk="100 ден." data-en="100 den.">100 ден.</span>
+                        <p class="ingredients" data-mk="Салама (40гр), кашкавал (40гр), салата" data-en="Salami (40g), yellow cheese (40g), salad">Салама (40гр), кашкавал (40гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/fp.png" alt="Француски" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ФРАНЦУСКИ СО ШУНКА" data-en="FRENCH WITH HAM">ФРАНЦУСКИ СО ШУНКА</h3>
+                        <span class="item-price" data-mk="100 ден." data-en="100 den.">100 ден.</span>
+                        <p class="ingredients" data-mk="Шунка (40гр), кашкавал (40гр), салата" data-en="Ham (40g), yellow cheese (40g), salad">Шунка (40гр), кашкавал (40гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/fv.png" alt="Француски" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ФРАНЦУСКИ СО ВРАТ" data-en="FRENCH WITH SMOKED NECK">ФРАНЦУСКИ СО ВРАТ</h3>
+                        <span class="item-price" data-mk="110 ден." data-en="110 den.">110 ден.</span>
+                        <p class="ingredients" data-mk="Врат (40гр), кашкавал (40гр), салата" data-en="Smoked neck (40g), yellow cheese (40g), salad">Врат (40гр), кашкавал (40гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/kul.png" alt="Француски" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ФРАНЦУСКИ СО КУЛЕН" data-en="FRENCH WITH KULEN">ФРАНЦУСКИ СО КУЛЕН</h3>
+                        <span class="item-price" data-mk="130 ден." data-en="130 den.">130 ден.</span>
+                        <p class="ingredients" data-mk="Кулен (40гр), кашкавал (40гр), салата" data-en="Kulen salami (40g), yellow cheese (40g), salad">Кулен (40гр), кашкавал (40гр), салата</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-fasting" class="menu-category-section">
+            <h3 class="menu-category-title" data-mk="ПОСНИ ЈАДЕЊА" data-en="FASTING DISHES">ПОСНИ ЈАДЕЊА</h3>
+            <div class="menu-grid">
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/kasm.png" alt="Посно" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОСЕН СО КАШКАВАЛ И ПЕЧУРКИ" data-en="VEGAN CHEESE & MUSHROOMS">ПОСЕН СО КАШКАВАЛ И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="90 ден." data-en="90 den.">90 ден.</span>
+                        <p class="ingredients" data-mk="Посен кашкавал (60гр), печурки (30гр)" data-en="Vegan cheese (60g), mushrooms (30g)">Посен кашкавал (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/poskms.png" alt="Посно" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОСЕН СО КАШКАВАЛ, ПЕЧУРКИ И САЛАТА" data-en="VEGAN CHEESE, MUSHROOMS & SALAD">ПОСЕН СО КАШКАВАЛ, ПЕЧУРКИ И САЛАТА</h3>
+                        <span class="item-price" data-mk="100 ден." data-en="100 den.">100 ден.</span>
+                        <p class="ingredients" data-mk="Посен кашкавал (60гр), печурки (30гр), салата" data-en="Vegan cheese (60g), mushrooms (30g), salad">Посен кашкавал (60гр), печурки (30гр), салата</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/tunam.png" alt="Посно" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОСЕН СО КАШКАВАЛ И ТУНА" data-en="VEGAN CHEESE & TUNA">ПОСЕН СО КАШКАВАЛ И ТУНА</h3>
+                        <span class="item-price" data-mk="120 ден." data-en="120 den.">120 ден.</span>
+                        <p class="ingredients" data-mk="Посен кашкавал (60гр), туна (60гр)" data-en="Vegan cheese (60g), tuna (60g)">Посен кашкавал (60гр), туна (60гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/tunam.png" alt="Посно" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОСЕН СО КАШКАВАЛ, ТУНА И ПЕЧУРКИ" data-en="VEGAN CHEESE, TUNA & MUSHROOMS">ПОСЕН СО КАШКАВАЛ, ТУНА И ПЕЧУРКИ</h3>
+                        <span class="item-price" data-mk="140 ден." data-en="140 den.">140 ден.</span>
+                        <p class="ingredients" data-mk="Посен кашкавал (60гр), туна (60гр), печурки (30гр)" data-en="Vegan cheese (60g), tuna (60g), mushrooms (30g)">Посен кашкавал (60гр), туна (60гр), печурки (30гр)</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/tunams.png" alt="Посно" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОСЕН СО КАШКАВАЛ, ТУНА, ПЕЧУРКИ И САЛАТА" data-en="VEGAN CHEESE, TUNA, MUSHROOMS & SALAD">ПОСЕН СО КАШКАВАЛ, ТУНА, ПЕЧУРКИ И САЛАТА</h3>
+                        <span class="item-price" data-mk="150 ден." data-en="150 den.">150 ден.</span>
+                        <p class="ingredients" data-mk="Посен кашкавал (60гр), туна (60гр), печурки (30гр), салата" data-en="Vegan cheese (60g), tuna (60g), mushrooms (30g), salad">Посен кашкавал (60гр), туна (60гр), печурки (30гр), салата</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-fries" class="menu-category-section">
+            <h3 class="menu-category-title" data-mk="ПОМФРИТ & ДОДАТОЦИ" data-en="FRIES & SIDES">ПОМФРИТ & ДОДАТОЦИ</h3>
+            <div class="menu-grid">
+               
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/frie.png" alt="Помфрит" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОМФРИТ СРЕДЕН" data-en="MEDIUM FRIES">ПОМФРИТ СРЕДЕН</h3>
+                        <span class="item-price" data-mk="100 ден." data-en="100 den.">100 ден.</span>
+                        <p class="ingredients" data-mk="Порција од 300 грама" data-en="300g portion">Порција од 300 грама</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/frie.png" alt="Помфрит" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОМФРИТ ГОЛЕМ" data-en="LARGE FRIES">ПОМФРИТ ГОЛЕМ</h3>
+                        <span class="item-price" data-mk="150 ден." data-en="150 den.">150 ден.</span>
+                        <p class="ingredients" data-mk="Порција од 450 грама" data-en="450g portion">Порција од 450 грама</p>
+                    </div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/fries.png" alt="Помфрит" class="plate-img"></div>
+                    <div class="item-info">
+                        <h3 data-mk="ПОМФРИТ СО СИРЕЊЕ" data-en="FRIES WITH WHITE CHEESE">ПОМФРИТ СО СИРЕЊЕ</h3>
+                        <span class="item-price" data-mk="160 ден." data-en="160 den.">160 ден.</span>
+                        <p class="ingredients" data-mk="Порција од 500 грама со рендано сирење" data-en="500g portion topped with shredded white cheese">Порција од 500 грама со рендано сирење</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-drinks" class="menu-category-section">
+            <h3 class="menu-category-title" data-mk="ПИЈАЛОЦИ" data-en="DRINKS">ПИЈАЛОЦИ</h3>
+            <div class="menu-grid">
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/pepsi.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="ПЕПСИ" data-en="PEPSI">ПЕПСИ</h3><span class="item-price" data-mk="60 ден." data-en="60 den.">60 ден.</span><p class="ingredients" data-mk="330мл" data-en="330ml">330мл</p></div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/mirinda.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="МИРИНДА" data-en="MIRINDA">МИРИНДА</h3><span class="item-price" data-mk="60 ден." data-en="60 den.">60 ден.</span><p class="ingredients" data-mk="330мл" data-en="330ml">330мл</p></div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/7up.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="7 УП" data-en="7 UP">7 УП</h3><span class="item-price" data-mk="60 ден." data-en="60 den.">60 ден.</span><p class="ingredients" data-mk="330мл" data-en="330ml">330мл</p></div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/gazoza.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="ГАЗОЗА" data-en="GAZOZA">ГАЗОЗА</h3><span class="item-price" data-mk="60 ден." data-en="60 den.">60 ден.</span><p class="ingredients" data-mk="330мл" data-en="330ml">330мл</p></div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/tube.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="ГУСТО БРАВО" data-en="GUSTO BRAVO">ГУСТО БРАВО</h3><span class="item-price" data-mk="80 ден." data-en="80 den.">80 ден.</span><p class="ingredients" data-mk="330мл" data-en="330ml">330мл</p></div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/knaz.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="КИСЕЛА ВОДА" data-en="SPARKLING WATER">КИСЕЛА ВОДА</h3><span class="item-price" data-mk="50 ден." data-en="50 den.">50 ден.</span><p class="ingredients" data-mk="500мл" data-en="500ml">500мл</p></div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/akva.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="ФЛАШИРАНА ВОДА" data-en="BOTTLED WATER">ФЛАШИРАНА ВОДА</h3><span class="item-price" data-mk="40 ден." data-en="40 den.">40 ден.</span><p class="ingredients" data-mk="500мл" data-en="500ml">500мл</p></div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/makijato.webp" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="МАКИЈАТО" data-en="MACCHIATO">МАКИЈАТО</h3><span class="item-price" data-mk="50 ден." data-en="50 den.">50 ден.</span><p class="ingredients" data-mk="100мл" data-en="100ml">100мл</p></div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/espreso.webp" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="ЕСПРЕСО" data-en="ESPRESSO">ЕСПРЕСО</h3><span class="item-price" data-mk="50 ден." data-en="50 den.">50 ден.</span><p class="ingredients" data-mk="100мл" data-en="100ml">100мл</p></div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/kapucino.webp" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="КАПУЧИНО" data-en="CAPPUCCINO">КАПУЧИНО</h3><span class="item-price" data-mk="80 ден." data-en="80 den.">80 ден.</span><p class="ingredients" data-mk="100мл" data-en="100ml">100мл</p></div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/nescafe.webp" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="НЕСКАФЕ" data-en="NESCAFE">НЕСКАФЕ</h3><span class="item-price" data-mk="80 ден." data-en="80 den.">80 ден.</span><p class="ingredients" data-mk="250мл" data-en="250ml">250мл</p></div>
+                </div>
+                <div class="menu-item anim-right">
+                    <div class="item-plate"><img src="img/caj.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="ЧАЈ" data-en="TEA">ЧАЈ</h3><span class="item-price" data-mk="50 ден." data-en="50 den.">50 ден.</span><p class="ingredients" data-mk="200мл" data-en="200ml">200мл</p></div>
+                </div>
+                <div class="menu-item anim-left">
+                    <div class="item-plate"><img src="img/pivo.png" alt="Пијалок" class="plate-img"></div>
+                    <div class="item-info"><h3 data-mk="ПИВО" data-en="BEER">ПИВО</h3><span class="item-price" data-mk="80 ден." data-en="80 den.">80 ден.</span><p class="ingredients" data-mk="500мл" data-en="500ml">500мл</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="contact" class="assembly-section">
+...
+
+    <section class="assembly-section">
+        <div class="assembly-viewport">
+            <h2 class="assembly-title" data-mk="СОЗДАДЕНО ДОДЕКА СКРОЛАТЕ" data-en="CRAFTED AS YOU SCROLL">СОЗДАДЕНО ДОДЕКА СКРОЛАТЕ</h2>
+            
+            <div class="burger-blueprint">
+                
+                <svg class="burger-layer layer-bottom-bun" viewBox="0 0 100 100" style="z-index: 1;">
+                    <path d="M15,55 C15,80 85,80 85,55 Z" fill="#D38A22" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                    <ellipse cx="50" cy="55" rx="35" ry="12" fill="#F4A92B" stroke="#000" stroke-width="2"/>
+                </svg>
+
+                <svg class="burger-layer layer-sauce" viewBox="0 0 100 100" style="z-index: 2;">
+                    <path d="M20,53 C25,48 40,45 50,45 C65,45 75,48 80,53 C85,58 82,62 78,60 C75,65 72,66 70,62 C65,65 60,68 55,63 C50,68 45,67 40,63 C35,68 30,65 28,60 C24,64 15,58 20,53 Z" fill="#FFFFFF" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+
+                <svg class="burger-layer layer-tomatoes" viewBox="0 0 100 100" style="z-index: 3;">
+                    <path d="M18,48 L18,58 C18,70 82,70 82,58 L82,48 Z" fill="#A81C10" stroke="#000" stroke-width="2"/>
+                    <ellipse cx="50" cy="48" rx="32" ry="11" fill="#D92818" stroke="#000" stroke-width="2"/>
+                </svg>
+
+                <svg class="burger-layer layer-cheese" viewBox="0 0 100 100" style="z-index: 4;">
+                    <path d="M50,38 L88,48 C88,48 90,52 85,55 C80,62 78,58 75,55 L50,65 C45,72 40,75 35,62 L12,48 C12,48 10,45 15,42 Z" fill="#FFF056" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+
+                <svg class="burger-layer layer-patty" viewBox="0 0 100 100" style="z-index: 5;">
+                    <path d="M15,44 L15,52 C15,65 85,65 85,52 L85,44 Z" fill="#3D1A0A" stroke="#000" stroke-width="2"/>
+                    <ellipse cx="50" cy="44" rx="35" ry="12" fill="#5C2912" stroke="#000" stroke-width="2"/>
+                </svg>
+
+                <svg class="burger-layer layer-lettuce" viewBox="0 0 100 100" style="z-index: 6;">
+                    <path d="M10,45 C20,38 30,50 40,42 C50,52 60,40 70,48 C80,38 90,48 90,45 C95,55 85,60 75,55 C65,65 55,55 45,62 C35,55 25,60 15,55 C5,60 5,50 10,45 Z" fill="#3EE04C" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M15,45 C25,38 35,50 45,42 C55,52 65,40 75,48" fill="none" stroke="#26A330" stroke-width="1.5"/>
+                </svg>
+
+                <svg class="burger-layer layer-top-bun" viewBox="0 0 100 100" style="z-index: 7;">
+                    <path d="M15,40 C15,10 85,10 85,40 C85,55 15,55 15,40 Z" fill="#F4A92B" stroke="#000" stroke-width="2"/>
+                    <ellipse cx="50" cy="40" rx="35" ry="12" fill="none" stroke="#D38A22" stroke-width="2"/>
+                    <path d="M85,40 C85,50 50,55 15,40 C20,50 50,52 82,35 Z" fill="#D38A22"/>
+                    <ellipse cx="30" cy="25" rx="1.5" ry="2.5" fill="#FFF" transform="rotate(-30 30 25)"/>
+                    <ellipse cx="50" cy="20" rx="1.5" ry="2.5" fill="#FFF" transform="rotate(15 50 20)"/>
+                    <ellipse cx="70" cy="28" rx="1.5" ry="2.5" fill="#FFF" transform="rotate(45 70 28)"/>
+                    <ellipse cx="40" cy="32" rx="1.5" ry="2.5" fill="#FFF" transform="rotate(-15 40 32)"/>
+                    <ellipse cx="60" cy="35" rx="1.5" ry="2.5" fill="#FFF" transform="rotate(25 60 35)"/>
+                    <ellipse cx="22" cy="36" rx="1.5" ry="2.5" fill="#FFF" transform="rotate(-40 22 36)"/>
+                    <ellipse cx="78" cy="38" rx="1.5" ry="2.5" fill="#FFF" transform="rotate(40 78 38)"/>
+                </svg>
+
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <footer class="main-footer">
+        <div class="footer-grid">
+            
+            <div class="footer-column info-col">
+                <h3 class="footer-logo">MAMLI<span class="orange-dot">.</span></h3>
+                <p class="footer-desc" data-mk="Премиум вкус доставен директно до вашиот праг." data-en="Premium taste delivered straight to your doorstep.">Премиум вкус доставен директно до вашиот праг.</p>
+                <div class="footer-contact-details">
+                    <p><span>📍</span> Прилеп, Македонија</p>
+                    <p><span>📞</span> <a href="tel:+389078451919">+389 078 45 19 19</a></p>
+                    
+                    <p style="margin-top: 15px;">
+                        <a href="#" id="openTicketScanner" style="color: var(--brand-orange); font-size: 0.95rem; font-weight: 900; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.2rem;">🎫</span> Проверка на нарачка
+                        </a>
+                    </p>
+                    
+                </div>
+            </div>
+
+            <div class="footer-column map-col">
+                <h4 data-mk="Побарај Насоки" data-en="Get Directions">Побарај Насоки</h4>
+                <div class="footer-map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11977.019565509747!2d21.5532125!3d41.3450326!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1356ebf7a7be9cef%3A0x43a0c85e80833fb5!2zTWFtbGk!5e0!3m2!1smk!2smk!4v1717961120000!5m2!1smk!2smk" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="footer-column actions-col">
+                <h4 data-mk="Поврзи Се Со Нас" data-en="Connect With Us">Поврзи Се Со Нас</h4>
+                <div class="footer-links-stack">
+                    <a href="https://www.facebook.com/SquareFood" target="_blank" class="footer-action-btn fb-btn">
+                        <span class="icon">📘</span> 
+                        <span data-mk="Фејсбук Страна" data-en="Facebook Page">Фејсбук Страна</span>
+                    </a>
+
+                    <a href="https://www.google.com/maps/dir//Mamli,+Prilep/@41.3421711,21.5518291,17z" target="_blank" class="footer-action-btn direction-btn">
+                        <span class="icon">🚗</span> 
+                        <span data-mk="Насоки на Мапа" data-en="Map Directions">Насоки на Мапа</span>
+                    </a>
+
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJ75y-p-brVhMRtT-DgF7IoEM" target="_blank" class="footer-action-btn review-btn">
+                        <span class="icon">⭐</span> 
+                        <span data-mk="Остави Рецензија" data-en="Write a Review">Остави Рецензија</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 MAMLI. All rights reserved.</p>
+        </div>
+    </footer>
+    <div id="modalOverlay" class="modal-overlay"></div>
+
+<div id="itemModal" class="modal-box">
+    <button class="modal-close" id="closeItemModal">×</button>
+    <img id="modalItemImg" src="" alt="Item" class="modal-img">
+    <h3 id="modalItemTitle" class="modal-title"></h3>
+    <p id="modalItemDesc" class="modal-desc"></p>
+    
+    <div class="modal-options-wrap" id="modalOptionsWrap">
+        <h4 data-mk="Додатоци (Опционално):" data-en="Extras (Optional):">Додатоци (Опционално):</h4>
+        
+        <label class="custom-checkbox">
+            <input type="checkbox" class="item-addon" data-addon-price="40" data-addon-mk="Екстра Помфрит" data-addon-en="Extra Fries">
+            <div class="checkmark-wrap">
+                <span class="checkmark"></span>
+                <span class="addon-name" data-mk="Екстра Помфрит" data-en="Extra Fries">Екстра Помфрит</span>
+            </div>
+            <span class="addon-price">+40 ден.</span>
+        </label>
+        
+        <label class="custom-checkbox">
+            <input type="checkbox" class="item-addon" data-addon-price="0" data-addon-mk="Салата" data-addon-en="Salad">
+            <div class="checkmark-wrap">
+                <span class="checkmark"></span>
+                <span class="addon-name" data-mk="Салата" data-en="Salad">Салата</span>
+            </div>
+        </label>
+        
+        <label class="custom-checkbox">
+            <input type="checkbox" class="item-addon" data-addon-price="0" data-addon-mk="Кечап" data-addon-en="Ketchup">
+            <div class="checkmark-wrap">
+                <span class="checkmark"></span>
+                <span class="addon-name" data-mk="Кечап" data-en="Ketchup">Кечап</span>
+            </div>
+        </label>
+        
+        <label class="custom-checkbox">
+            <input type="checkbox" class="item-addon" data-addon-price="0" data-addon-mk="Мајонез" data-addon-en="Mayo">
+            <div class="checkmark-wrap">
+                <span class="checkmark"></span>
+                <span class="addon-name" data-mk="Мајонез" data-en="Mayo">Мајонез</span>
+            </div>
+        </label>
+    </div>
+
+    <div class="modal-price-wrap">
+        <span id="modalItemPrice" class="modal-price"></span>
+    </div>
+    
+    <div class="modal-qty-controls">
+        <button id="qtyBtnMinus" class="qty-btn">-</button>
+        <input type="number" id="qtyInput" value="1" min="1" max="20" readonly>
+        <button id="qtyBtnPlus" class="qty-btn">+</button>
+    </div>
+    
+    <button id="btnAddToCart" class="btn-primary" data-mk="ДОДАЈ ВО КОШНИЧКА" data-en="ADD TO CART">ДОДАЈ ВО КОШНИЧКА</button>
+</div>
+</div>
+<div id="cartModal" class="modal-box cart-modal">
+        <button class="modal-close">×</button>
+        <h3 class="modal-title" data-mk="Твојата Кошничка" data-en="Your Cart">Твојата Кошничка</h3>
+        <div id="cartItemsList" class="cart-items-list">
+            </div>
+        <div class="cart-total-wrap">
+            <span data-mk="Вкупно:" data-en="Total:">Вкупно:</span>
+            <span id="cartTotalValue">0 ден.</span>
+        </div>
+        <button id="btnCheckout" class="btn-primary" data-mk="НАПЛАТИ" data-en="CHECKOUT">НАПЛАТИ</button>
+    </div>
+
+    <div id="checkoutModal" class="modal-box">
+        <button class="modal-close">×</button>
+        <h3 class="modal-title" data-mk="Направи слика од ова!" data-en=" Take a Screenshot!">Направи слика од ова!</h3>
+        <p class="modal-desc" data-mk="Покажи го овој код на каса за да ја нарачаш храната." data-en="Show this code at the counter to order your food.">Покажи го овој код на каса за да ја нарачаш храната.</p>
+        <div id="quickCodeDisplay" class="quick-code"></div>
+        <button id="btnFinishOrder" class="btn-primary" data-mk="ЗАТВОРИ" data-en="CLOSE">ЗАТВОРИ</button>
+        
+        <div class="checkout-google-wrap">
+            <p class="checkout-google-text">
+                <img src="img/logo.png" alt="logo" class="google-logo-img">
+                <span data-mk="Посетете нè или оставете оценка на Google:" data-en="Visit us or leave a rating on Google:">Посетете нè или оставете оценка на Google:</span>
+            </p>
+            <div class="checkout-actions-row">
+                <a href="https://www.google.com/maps/search/?api=1&query=Mamli+Prilep&query_place_id=ChIJ75y-p-brVhMRtT-DgF7IoEM" target="_blank" class="btn-secondary" data-mk="НАСОКИ" data-en="DIRECTIONS">НАСОКИ</a>
+                <a href="https://search.google.com/local/writereview?placeid=ChIJ75y-p-brVhMRtT-DgF7IoEM" target="_blank" class="btn-secondary review-btn-stars" data-mk="ОЦЕНКА ★★★★☆" data-en="RATE US ★★★★☆">ОЦЕНКА ★★★★☆</a>
+            </div>
+        </div>
+        </div>
+        <div id="historyModal" class="modal-box">
+    <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3 data-en="Order History" data-mk="Историја на нарачки" style="margin: 0;">Историја на нарачки</h3>
+        <button class="modal-close" style="background: none; border: none; font-size: 1.8rem; cursor: pointer;">&times;</button>
+    </div>
+    <div id="historyCodesList" style="max-height: 300px; overflow-y: auto;"></div>
+</div>
+
+<div id="ticketModal" class="modal-box">
+    <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h3 style="margin: 0; color: var(--brand-brown); font-family: var(--font-display);">🎫 Провери Нарачка</h3>
+        <button class="modal-close" style="background: none; border: none; font-size: 1.8rem; cursor: pointer;">×</button>
+    </div>
+    
+    <p style="font-size: 0.9rem; color: #777; margin-bottom: 15px; font-weight: 700;">Внесете го вашиот код (на пр. #MML-A1B2) за да го проверите статусот и сметката.</p>
+    
+    <input type="text" id="ticketInput" placeholder="#MML-XXXX" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid var(--brand-brown); border-radius: 10px; font-size: 1.1rem; text-transform: uppercase; text-align: center; font-weight: 900; outline: none;">
+    
+    <button id="btnCheckTicket" class="btn-primary" style="margin-bottom: 15px;">🔍 ПРОВЕРИ КОД</button>
+    
+    <div id="ticketResultBox" style="display: none; text-align: left; background: var(--bg-cream); padding: 15px; border-radius: 10px; border: 1px dashed #ccc;"></div>
+</div>
+</body>
+</html>
