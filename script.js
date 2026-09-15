@@ -312,6 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
         repeat: -1,
         ease: "sine.inOut"
     });
+    
    // --- 8. CART & CHECKOUT LOGIC ---
     let cart = [];
     const overlay = document.getElementById("modalOverlay");
@@ -324,8 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentBasePrice = 0; // Tracks price before extras are added
 
     function openModal(modal) {
-        overlay.classList.add("active");
-        modal.classList.add("active");
+        if(modal) {
+            overlay.classList.add("active");
+            modal.classList.add("active");
+        }
     }
 
     function closeAllModals() {
@@ -352,413 +355,221 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".menu-item").forEach(item => {
         item.style.cursor = "pointer";
         item.addEventListener("click", () => {
-            const img = item.querySelector(".plate-img").src;
-            const titleMk = item.querySelector("h3").getAttribute("data-mk");
-            const titleEn = item.querySelector("h3").getAttribute("data-en");
+            currentSelectedItem = {
+                titleMk: item.querySelector("h3").getAttribute("data-mk") || item.querySelector("h3").innerText,
+                titleEn: item.querySelector("h3").getAttribute("data-en") || item.querySelector("h3").innerText,
+                priceText: item.querySelector(".item-price").innerText,
+                imgSrc: item.querySelector(".plate-img").src,
+                descMk: item.querySelector(".ingredients").getAttribute("data-mk") || item.querySelector(".ingredients").innerText,
+                descEn: item.querySelector(".ingredients").getAttribute("data-en") || item.querySelector(".ingredients").innerText
+            };
             
-            const descEl = item.querySelector(".ingredients");
-            const descMk = descEl ? descEl.getAttribute("data-mk") : "";
-            const descEn = descEl ? descEl.getAttribute("data-en") : "";
-            
-            const priceText = item.querySelector(".item-price").innerText;
-            currentBasePrice = parseInt(priceText.match(/\d+/)[0]);
+            // Extract base price - grab the first number sequence
+            const match = currentSelectedItem.priceText.match(/\d+/);
+            currentBasePrice = match ? parseInt(match[0]) : 0;
 
-            currentSelectedItem = { titleMk, titleEn, descMk, descEn, basePrice: currentBasePrice, img };
+            document.getElementById("modalItemImg").src = currentSelectedItem.imgSrc;
+            
+            const titleEl = document.getElementById("modalItemTitle");
+            titleEl.innerText = currentSelectedItem.titleMk;
+            titleEl.setAttribute("data-mk", currentSelectedItem.titleMk);
+            titleEl.setAttribute("data-en", currentSelectedItem.titleEn);
+            
+            const descEl = document.getElementById("modalItemDesc");
+            descEl.innerText = currentSelectedItem.descMk;
+            descEl.setAttribute("data-mk", currentSelectedItem.descMk);
+            descEl.setAttribute("data-en", currentSelectedItem.descEn);
 
             const isMk = document.querySelector(".lang-toggle-btn.active").getAttribute("data-target-lang") === "mk";
-            
-            // --- DYNAMIC ADD-ON LOGIC START ---
-            const catId = item.closest('.menu-category-section').id;
-            const optionsWrap = document.getElementById("modalOptionsWrap");
-            
-            // Target the specific option labels based on their data attributes
-            const optFries = document.querySelector('input[data-addon-en="Extra Fries"]').closest('.custom-checkbox');
-            const optSalad = document.querySelector('input[data-addon-en="Salad"]').closest('.custom-checkbox');
-            const optKetchup = document.querySelector('input[data-addon-en="Ketchup"]').closest('.custom-checkbox');
-            const optMayo = document.querySelector('input[data-addon-en="Mayo"]').closest('.custom-checkbox');
-            
-            // 1. Reset all options to visible by default
-            optionsWrap.style.display = "block";
-            optFries.style.display = "flex";
-            optSalad.style.display = "flex";
-            optKetchup.style.display = "flex";
-            optMayo.style.display = "flex";
-
-            // 2. Hide specific options based on the item's category
-            if (catId === 'cat-drinks') {
-                // Drinks get no options wrapper at all
-                optionsWrap.style.display = "none";
-            } else if (catId === 'cat-burgers') {
-                // Burgers already come with fries
-                optFries.style.display = "none";
-            } else if (catId === 'cat-fries') {
-                // Fries don't need extra fries or salad
-                optFries.style.display = "none";
-                optSalad.style.display = "none";
-            }
-            // --- DYNAMIC ADD-ON LOGIC END ---
-
-            // Uncheck all boxes when opening a new item
-            document.querySelectorAll(".item-addon").forEach(cb => cb.checked = false);
-
-            document.getElementById("modalItemImg").src = img;
-            document.getElementById("modalItemTitle").innerText = isMk ? titleMk : titleEn;
-            document.getElementById("modalItemDesc").innerText = isMk ? descMk : descEn;
             document.getElementById("modalItemPrice").innerText = `${currentBasePrice} ${isMk ? 'ден.' : 'den.'}`;
+            
             document.getElementById("qtyInput").value = 1;
+            document.querySelectorAll(".item-addon").forEach(cb => cb.checked = false);
 
             openModal(itemModal);
         });
     });
 
+    // Cart Quantity Controls
     document.getElementById("qtyBtnMinus").addEventListener("click", () => {
-        let val = parseInt(document.getElementById("qtyInput").value);
-        if (val > 1) document.getElementById("qtyInput").value = val - 1;
+        let q = parseInt(document.getElementById("qtyInput").value);
+        if (q > 1) document.getElementById("qtyInput").value = q - 1;
     });
     
     document.getElementById("qtyBtnPlus").addEventListener("click", () => {
-        let val = parseInt(document.getElementById("qtyInput").value);
-        if (val < 20) document.getElementById("qtyInput").value = val + 1;
+        let q = parseInt(document.getElementById("qtyInput").value);
+        if (q < 20) document.getElementById("qtyInput").value = q + 1;
     });
 
     // Add to Cart Action
     document.getElementById("btnAddToCart").addEventListener("click", () => {
-        const qty = parseInt(document.getElementById("qtyInput").value);
-        if(currentSelectedItem) {
-            
-            // Gather selected options
-            let selectedOptions = [];
-            let totalExtrasPrice = 0;
-            document.querySelectorAll(".item-addon:checked").forEach(cb => {
-                const p = parseInt(cb.getAttribute("data-addon-price"));
-                selectedOptions.push({
-                    nameMk: cb.getAttribute("data-addon-mk"),
-                    nameEn: cb.getAttribute("data-addon-en"),
-                    price: p
-                });
-                totalExtrasPrice += p;
-            });
+        let qty = parseInt(document.getElementById("qtyInput").value);
+        let extraPrice = 0;
+        let extrasMk = [];
+        let extrasEn = [];
+        
+        document.querySelectorAll(".item-addon:checked").forEach(cb => {
+            extraPrice += parseInt(cb.getAttribute("data-addon-price"));
+            extrasMk.push(cb.getAttribute("data-addon-mk"));
+            extrasEn.push(cb.getAttribute("data-addon-en"));
+        });
 
-            const finalUnitPrice = currentBasePrice + totalExtrasPrice;
-            
-            // Create a unique key so items with different options don't combine
-            const optionsKey = selectedOptions.map(o => o.nameEn).sort().join('-');
-            const uniqueCartId = currentSelectedItem.titleEn + '|' + optionsKey;
-
-            const cartItem = {
-                ...currentSelectedItem,
-                price: finalUnitPrice,
-                options: selectedOptions,
-                cartId: uniqueCartId,
-                qty: qty
-            };
-
-            const existingItemIndex = cart.findIndex(c => c.cartId === uniqueCartId);
-            if (existingItemIndex > -1) {
-                cart[existingItemIndex].qty += qty;
-            } else {
-                cart.push(cartItem);
-            }
-            
-            updateCartBadge();
-            closeAllModals();
-            gsap.fromTo(".cart-icon", { scale: 1.5 }, { scale: 1, duration: 0.5, ease: "bounce.out" });
-        }
+        let unitPrice = currentBasePrice + extraPrice;
+        let finalPrice = unitPrice * qty;
+        
+        cart.push({
+            titleMk: currentSelectedItem.titleMk,
+            titleEn: currentSelectedItem.titleEn,
+            qty: qty,
+            unitPrice: unitPrice,
+            price: finalPrice,
+            extrasMk: extrasMk.join(", "),
+            extrasEn: extrasEn.join(", ")
+        });
+        
+        updateCartUI();
+        closeAllModals();
     });
 
-    function updateCartBadge() {
-        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-        if (totalItems > 0) {
+    function updateCartUI() {
+        const isMk = document.querySelector(".lang-toggle-btn.active").getAttribute("data-target-lang") === "mk";
+        
+        if (cart.length > 0) {
             cartBadge.style.display = "flex";
-            cartBadge.innerText = totalItems;
+            cartBadge.innerText = cart.length;
         } else {
             cartBadge.style.display = "none";
         }
-    }
-
-    document.querySelector(".cart-wrapper").addEventListener("click", () => {
-        renderCart();
-        openModal(cartModal);
-    });
-
-    function renderCart() {
+        
         const list = document.getElementById("cartItemsList");
         list.innerHTML = "";
         let total = 0;
-        const isMk = document.querySelector(".lang-toggle-btn.active").getAttribute("data-target-lang") === "mk";
-
-        if (cart.length === 0) {
-            list.innerHTML = `<p style="text-align:center; font-weight: 800; color:#b0a8a5; padding: 20px;">${isMk ? 'Кошничката е празна.' : 'Your cart is empty.'}</p>`;
-            document.getElementById("btnCheckout").style.display = "none";
-        } else {
-            document.getElementById("btnCheckout").style.display = "block";
-            cart.forEach((item, index) => {
-                total += item.price * item.qty;
-                const title = isMk ? item.titleMk : item.titleEn;
-                const currency = isMk ? 'ден.' : 'den.';
-                
-                // Format the extras text underneath the title
-                const extrasText = item.options.length > 0 
-                    ? `<div style="font-size: 0.8rem; color: #E05320; margin-top: 4px;">+ ${item.options.map(o => isMk ? o.nameMk : o.nameEn).join(', ')}</div>` 
-                    : '';
-                
-                const el = document.createElement("div");
-                el.className = "cart-item";
-                el.innerHTML = `
-                    <div class="cart-item-info">
-                        <h4>${title} (x${item.qty})</h4>
-                        ${extrasText}
-                        <p style="margin-top: 4px;">${item.price} ${currency} / ${isMk ? 'парче' : 'ea'}</p>
-                    </div>
-                    <div class="cart-item-price">${item.price * item.qty} ${currency}</div>
-                    <button class="cart-item-remove" onclick="removeFromCart(${index})">×</button>
-                `;
-                list.appendChild(el);
-            });
-        }
+        
+        cart.forEach((cItem, index) => {
+            total += cItem.price;
+            
+            let li = document.createElement("div");
+            li.style.display = "flex";
+            li.style.justifyContent = "space-between";
+            li.style.alignItems = "center";
+            li.style.marginBottom = "15px";
+            li.style.borderBottom = "1px solid #eee";
+            li.style.paddingBottom = "10px";
+            
+            let title = isMk ? cItem.titleMk : cItem.titleEn;
+            let ext = isMk ? cItem.extrasMk : cItem.extrasEn;
+            let extHtml = ext ? `<br><small style="color:gray;">+ ${ext}</small>` : "";
+            
+            li.innerHTML = `
+                <div style="flex: 1;">
+                    <strong style="color: var(--brand-brown);">${cItem.qty}x ${title}</strong>${extHtml}
+                </div>
+                <div style="font-weight: 900; color: var(--brand-orange);">
+                    ${cItem.price} ${isMk ? 'ден.' : 'den.'}
+                    <button class="remove-item" data-index="${index}" style="margin-left:15px; color:red; border:none; background:none; font-size: 1.2rem; cursor:pointer;">&times;</button>
+                </div>
+            `;
+            list.appendChild(li);
+        });
+        
         document.getElementById("cartTotalValue").innerText = `${total} ${isMk ? 'ден.' : 'den.'}`;
+        
+        document.querySelectorAll(".remove-item").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                let idx = e.target.getAttribute("data-index");
+                cart.splice(idx, 1);
+                updateCartUI();
+            });
+        });
     }
 
-    window.removeFromCart = function(index) {
-        cart.splice(index, 1);
-        updateCartBadge();
-        renderCart();
-    };
+    document.querySelector(".cart-wrapper").addEventListener("click", () => {
+        updateCartUI();
+        openModal(cartModal);
+    });
 
-   // --- 9. ORDER HISTORY ARRAYS ---
-    let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+    // --- 9. CHECKOUT & ORDER HISTORY (WITHOUT CODE GENERATION) ---
+    let orderHistory = JSON.parse(localStorage.getItem("mamliOrderHistory")) || [];
 
     document.getElementById("btnCheckout").addEventListener("click", () => {
-        if(cart.length === 0) return;
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let code = '#MML-';
-        for (let i = 0; i < 4; i++) {
-            code += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        document.getElementById("quickCodeDisplay").innerText = code;
+        if (cart.length === 0) return;
         
-        // 1. Capture current local system timestamp
-        const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' ' + new Date().toLocaleDateString();
+        let total = 0;
+        cart.forEach(i => total += i.price);
         
-        // 2. Map and capture detailed array objects of all items inside the receipt receipt list
-        const orderItems = cart.map(item => ({
-            titleMk: item.titleMk,
-            titleEn: item.titleEn,
-            qty: item.qty,
-            price: item.price,
-            options: item.options.map(o => ({ nameMk: o.nameMk, nameEn: o.nameEn }))
-        }));
+        const isMk = document.querySelector(".lang-toggle-btn.active").getAttribute("data-target-lang") === "mk";
         
-        // 3. Compute final bill sum total 
-        const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-        // Save order receipt metadata package into persistent browser local storage state
-        orderHistory.push({ 
-            code: code, 
-            date: timeNow, 
-            items: orderItems, 
-            total: totalPrice 
-        });
-        localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
-
-        cart = [];
-        updateCartBadge();
+        // Save to History (Items only, no code logic)
+        let newOrder = {
+            date: new Date().toLocaleString(),
+            items: cart,
+            total: total
+        };
+        
+        orderHistory.push(newOrder);
+        localStorage.setItem("mamliOrderHistory", JSON.stringify(orderHistory));
+        
+        // Update Checkout Modal to strictly show Total Price instead of generating a code
+        document.getElementById("quickCodeDisplay").innerHTML = `<span style="font-size: 0.8rem; color: #555; display: block; margin-bottom: 5px;">${isMk ? 'ВКУПНО ЗА НАПЛАТА:' : 'TOTAL DUE:'}</span>${total} ${isMk ? 'ден.' : 'den.'}`;
+        
+        cart = []; // Empty cart
+        updateCartUI();
         closeAllModals();
-        setTimeout(() => openModal(checkoutModal), 300);
+        openModal(checkoutModal);
     });
 
     document.getElementById("btnFinishOrder").addEventListener("click", closeAllModals);
 
-    // --- 10. ORDER HISTORY MODAL TRIGGER ---
-    const historyBtn = document.getElementById("naracajSegaBtn");
-    const historyModal = document.getElementById("historyModal");
-
-    if (historyBtn && historyModal) {
-        historyBtn.setAttribute("data-en", "Order History");
-        historyBtn.setAttribute("data-mk", "Историја на нарачки");
-        
-        historyBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            renderHistory();
-            openModal(historyModal);
-        });
-    }
-
-    function renderHistory() {
-        const list = document.getElementById("historyCodesList");
-        if (!list) return;
-        list.innerHTML = "";
-        
-        const activeLangBtn = document.querySelector(".lang-toggle-btn.active");
-        const isMk = activeLangBtn ? activeLangBtn.getAttribute("data-target-lang") === "mk" : true;
-
-        if (orderHistory.length === 0) {
-            list.innerHTML = `<p style="text-align:center; font-weight: 800; color:#b0a8a5; padding: 20px;">${isMk ? 'Немате претходни нарачки.' : 'No previous orders found.'}</p>`;
-        } else {
-            // Render codes from newest to oldest order
-            [...orderHistory].reverse().forEach(order => {
-                const el = document.createElement("div");
-                el.className = "history-container";
-                
-                const currency = isMk ? 'ден.' : 'den.';
-
-                // Build out inline html listing string blocks for order detail variants
-                let itemsHtml = '';
-                if (order.items && order.items.length > 0) {
-                    order.items.forEach(item => {
-                        const itemTitle = isMk ? item.titleMk : item.titleEn;
-                        const extrasText = item.options && item.options.length > 0 
-                            ? `<div class="history-item-extras">+ ${item.options.map(o => isMk ? o.nameMk : o.nameEn).join(', ')}</div>` 
-                            : '';
-                        itemsHtml += `
-                            <div class="history-detail-row">
-                                <div class="detail-left">
-                                    <span class="detail-name">${itemTitle} <small>x${item.qty}</small></span>
-                                    ${extrasText}
-                                </div>
-                                <span class="detail-price">${item.price * item.qty} ${currency}</span>
-                            </div>
-                        `;
-                    });
-                } else {
-                    itemsHtml = `<div style="text-align:center; color:#999; font-size:0.85rem; padding:5px 0;">${isMk ? 'Нема детални информации.' : 'No receipt details available.'}</div>`;
-                }
-
-                // Append Accordion structural items wrapper configuration blueprints
-                el.innerHTML = `
-                    <div class="history-item-header">
-                        <div class="history-meta">
-                            <span class="history-code">${order.code}</span>
-                            <span class="history-date">${order.date}</span>
-                        </div>
-                        <div class="history-total-side">
-                            <span class="history-total-amt">${order.total || 0} ${currency}</span>
-                            <span class="history-arrow">▼</span>
-                        </div>
-                    </div>
-                    <div class="history-item-details">
-                        <div class="history-details-inner">
-                            ${itemsHtml}
-                        </div>
-                    </div>
-                `;
-
-                // Add falling slide click event listener element loop
-                const header = el.querySelector(".history-item-header");
-                header.addEventListener("click", () => {
-                    el.classList.toggle("open");
+    // Order History Display Logic
+    const naracajSegaBtn = document.getElementById("naracajSegaBtn");
+    if (naracajSegaBtn) {
+        naracajSegaBtn.addEventListener("click", () => {
+            const historyList = document.getElementById("historyCodesList");
+            historyList.innerHTML = "";
+            const isMk = document.querySelector(".lang-toggle-btn.active").getAttribute("data-target-lang") === "mk";
+            
+            if (orderHistory.length === 0) {
+                historyList.innerHTML = `<p style="text-align: center; padding: 20px; color: #888;">${isMk ? 'Немате претходни нарачки.' : 'No previous orders.'}</p>`;
+            } else {
+                // Reverse array to show newest orders first
+                [...orderHistory].reverse().forEach(order => {
+                    let div = document.createElement("div");
+                    div.style.background = "#fff";
+                    div.style.padding = "15px";
+                    div.style.marginBottom = "10px";
+                    div.style.borderRadius = "8px";
+                    div.style.border = "2px solid #eee";
+                    
+                    let itemsHtml = order.items.map(i => {
+                        let title = isMk ? i.titleMk : i.titleEn;
+                        let ext = isMk ? i.extrasMk : i.extrasEn;
+                        let extText = ext ? ` (+${ext})` : "";
+                        return `<b>${i.qty}x</b> ${title}${extText}`;
+                    }).join("<br>");
+                    
+                    div.innerHTML = `
+                        <div style="font-size:0.8rem; color:gray; border-bottom: 1px dashed #ccc; padding-bottom: 5px; margin-bottom: 10px;">${order.date}</div>
+                        <div style="font-size:0.95rem; margin-bottom:10px; line-height: 1.4;">${itemsHtml}</div>
+                        <div style="color:var(--brand-orange); font-weight:900; text-align: right; font-size: 1.1rem;">${isMk ? 'Вкупно' : 'Total'}: ${order.total} ${isMk ? 'ден.' : 'den.'}</div>
+                    `;
+                    historyList.appendChild(div);
+                    
                 });
+            }
+            
+            openModal(document.getElementById("historyModal"));
+        });
+    }
+// Footer History Button Logic (Triggers same popup modal)
+const footerHistoryBtn = document.getElementById("footerHistoryBtn") || document.querySelector(".footer-history-btn");
 
-                list.appendChild(el);
-            });
+if (footerHistoryBtn) {
+    footerHistoryBtn.addEventListener("click", (e) => {
+        e.preventDefault(); 
+        const mainHistoryBtn = document.getElementById("naracajSegaBtn");
+        if (mainHistoryBtn) {
+            mainHistoryBtn.click(); // Triggers the exact same modal logic as PC
         }
-    }
-    // --- 11. TICKET SCANNER LOGIC ---
-    const openTicketScanner = document.getElementById("openTicketScanner");
-    const ticketModal = document.getElementById("ticketModal");
-    const btnCheckTicket = document.getElementById("btnCheckTicket");
-    const ticketInput = document.getElementById("ticketInput");
-    const ticketResultBox = document.getElementById("ticketResultBox");
-
-    // 1. Stop jumping to top and open the modal instead
-    if (openTicketScanner && ticketModal) {
-        openTicketScanner.addEventListener("click", (e) => {
-            e.preventDefault(); 
-            ticketInput.value = ""; // Clear old typing
-            ticketResultBox.style.display = "none"; // Hide old results
-            openModal(ticketModal);
-        });
-    }
-
-    // 2. The actual search logic when they click "Check Code" inside the modal
-    if (btnCheckTicket) {
-        btnCheckTicket.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            if (!ticketInput || !ticketResultBox) return;
-
-            let query = ticketInput.value.trim().toUpperCase();
-            if (!query) return;
-
-            // Auto-fix if they forgot the #MML- part
-            if (!query.startsWith("#MML-")) {
-                if (query.startsWith("MML-")) query = "#" + query;
-                else query = "#MML-" + query;
-            }
-
-            ticketResultBox.style.display = "block";
-            ticketResultBox.innerHTML = "<p style='text-align:center;'>Се пребарува...</p>";
-
-            const localHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
-            const foundOrder = localHistory.find(order => order.code.toUpperCase() === query);
-
-            if (!foundOrder) {
-                ticketResultBox.innerHTML = `
-                    <div style="color: #d32f2f; text-align: center; font-weight: bold;">
-                        ❌ Кодот не е пронајден! <br> <small>Проверете дали е точно внесен.</small>
-                    </div>`;
-                return;
-            }
-
-            // Build out the receipt visuals if found
-            let itemsListHtml = "";
-            foundOrder.items.forEach(item => {
-                const extras = item.options.length > 0 ? `<div style="color:#E05320; font-size:0.8rem; font-weight:800;">+ ${item.options.map(o => o.nameMk).join(', ')}</div>` : '';
-                itemsListHtml += `
-                    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed #ccc; font-size:0.95rem;">
-                        <div>
-                            <strong style="color: var(--brand-brown);">${item.titleMk}</strong> 
-                            <span style="color:#E05320; font-weight:900; margin-left: 5px;">x${item.qty}</span>
-                            ${extras}
-                        </div>
-                        <span style="font-weight:900; color:var(--brand-brown);">${item.price * item.qty} ден.</span>
-                    </div>
-                `;
-            });
-
-            ticketResultBox.innerHTML = `
-                <div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--brand-brown); padding-bottom:10px; margin-bottom:10px;">
-                        <div>
-                            <span style="font-family:monospace; font-size:1.4rem; font-weight:900; color:var(--brand-orange);">${foundOrder.code}</span>
-                            <div style="font-size:0.8rem; color:#888; font-weight:700;">${foundOrder.date}</div>
-                        </div>
-                        <span style="background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.8rem;">ВАЛИДЕН</span>
-                    </div>
-                    <div style="margin-bottom: 15px;">${itemsListHtml}</div>
-                    <div style="background: rgba(74, 26, 4, 0.05); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-weight: 900; color: var(--brand-brown); font-size: 1.1rem;">ВКУПНО:</span>
-                        <span style="font-weight: 900; color: var(--brand-orange); font-size: 1.3rem;">${foundOrder.total} ден.</span>
-                    </div>
-                </div>
-            `;
-        });
-    }
-    // --- MOBILE MENU DROPDOWN LOGIC ---
-document.addEventListener("DOMContentLoaded", () => {
-    const rightActions = document.querySelector('.nav-right-actions');
-    const navMenu = document.querySelector('.nav-center-capsule');
-    
-    // Create the mobile hamburger button dynamically
-    const burgerIcon = document.createElement('button');
-    burgerIcon.className = 'mobile-burger-btn';
-    burgerIcon.innerHTML = '☰';
-    
-    // Insert the button into the header (before the language toggle)
-    if (rightActions) {
-        rightActions.insertBefore(burgerIcon, rightActions.firstChild);
-    }
-
-    // Toggle the dropdown menu when the hamburger icon is clicked
-    burgerIcon.addEventListener('click', () => {
-        navMenu.classList.toggle('mobile-active');
     });
-
-    // Close the dropdown menu automatically when a link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('mobile-active');
-        });
-    });
-});
-});
+}
+}); // End of DOMContentLoaded
