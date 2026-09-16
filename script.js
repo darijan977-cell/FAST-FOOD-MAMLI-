@@ -368,6 +368,28 @@ document.addEventListener("DOMContentLoaded", () => {
             const match = currentSelectedItem.priceText.match(/\d+/);
             currentBasePrice = match ? parseInt(match[0]) : 0;
 
+            // --- ADDONS FILTERING LOGIC ---
+            const addonsAttr = item.getAttribute("data-addons");
+            const addonsList = addonsAttr ? addonsAttr.split(",") : ["none"];
+            const optionsWrap = document.getElementById("modalOptionsWrap");
+            
+            if (addonsList.includes("none")) {
+                // Hide addons completely for items like Drinks
+                optionsWrap.style.display = "none";
+            } else {
+                // Show only the specific addons assigned to this item
+                optionsWrap.style.display = ""; 
+                document.querySelectorAll(".custom-checkbox").forEach(label => {
+                    const addonId = label.getAttribute("data-addon-id");
+                    if (addonsList.includes(addonId)) {
+                        label.style.display = ""; 
+                    } else {
+                        label.style.display = "none";
+                    }
+                });
+            }
+            // ------------------------------
+
             document.getElementById("modalItemImg").src = currentSelectedItem.imgSrc;
             
             const titleEl = document.getElementById("modalItemTitle");
